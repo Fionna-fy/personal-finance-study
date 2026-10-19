@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>个人理财｜交互式考点学习站</title>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--ink:#202735;--muted:#697386;--line:#e5e8ee;--blue:#315efb;--soft:#edf1ff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}header{background:linear-gradient(120deg,#182744,#315efb);color:#fff;padding:30px max(18px,calc((100% - 1120px)/2))}h1{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:8px 0}header p{color:#e5eaff;max-width:700px}.stats,.tabs,.toolbar,.actions{display:flex;gap:9px;flex-wrap:wrap}.stat{border:1px solid #ffffff40;border-radius:12px;padding:7px 12px;background:#ffffff12;font-size:13px}main{max-width:1120px;margin:22px auto;padding:0 16px 42px}.toolbar{margin-bottom:14px}input,select,button{font:inherit;border-radius:11px;padding:10px 13px}input,select{border:1px solid var(--line);background:#fff;color:var(--ink)}#search{flex:1;min-width:210px}button{border:0;background:var(--blue);color:white;font-weight:650;cursor:pointer}.secondary,.tab{background:#e9edf4;color:#394458}.tab.active{background:#202e4b;color:white}.layout{display:grid;grid-template-columns:1.5fr .8fr;gap:16px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 5px 20px #1d2b4509}.panel h2{margin:0 0 4px;font-size:21px}.sub{font-size:13px;color:var(--muted)}.chapter{border:1px solid var(--line);border-radius:13px;margin:10px 0;overflow:hidden}.chapter h3{font-size:16px;margin:0}.chapterhead{background:#fbfcfe;padding:12px 14px;display:flex;justify-content:space-between}.points{padding:0 14px 10px}.point{border-top:1px solid #f0f2f5;padding:10px 0}.point strong{display:block;font-size:14px}.point p{margin:3px 0 0;font-size:14px;color:#4d5869}.pill{display:inline-block;background:var(--soft);color:var(--blue);border-radius:20px;padding:1px 7px;font-size:11px;margin-right:5px}.flashcard{min-height:190px;border:1px dashed #c7d1e7;border-radius:15px;background:linear-gradient(145deg,#f7f8ff,#fff);padding:22px;display:flex;flex-direction:column;justify-content:center;text-align:center;cursor:pointer}.face{font-size:19px;font-weight:700}.answer{font-size:15px;color:#4d5869;margin-top:12px}.progress{height:7px;background:#edf0f5;border-radius:20px;overflow:hidden;margin:12px 0}.progress span{display:block;height:100%;width:0;background:var(--blue)}.question{border-top:1px solid var(--line);padding:14px 0}.question p{font-weight:650;margin:0 0 8px}.option{display:block;width:100%;text-align:left;background:#f5f7fb;color:#293246;margin:6px 0;font-weight:450}.option.correct{background:#e6f7f0;color:#12674f}.option.wrong{background:#fff0ee;color:#9c2f27}.hide{display:none!important}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}@media(max-width:780px){.layout{grid-template-columns:1fr}header{padding-top:25px}.panel{padding:15px}}
+</style></head><body>
+<header><div style="font-size:12px;letter-spacing:.15em">PERSONAL FINANCE · EXAM REVIEW</div><h1>个人理财｜交互式考点学习站</h1><p>将《个人理财考试核心考点汇总（记背版）》整理成可搜索考点、翻卡记忆和即时测验。可按章节复习，也可考前快速查漏补缺。</p><div class="stats"><span class="stat">📚 8章导航</span><span class="stat">🔎 考点搜索</span><span class="stat">🧠 翻卡记忆</span><span class="stat">✍️ 即时测验</span></div></header>
+<main><div class="toolbar"><input id="search" placeholder="搜索：4E、货币时间价值、保险利益…" aria-label="搜索考点"><select id="filter"><option value="all">全部章节</option></select><button class="secondary" id="clear">清除搜索</button></div><div class="tabs"><button class="tab active" data-view="notes">考点地图</button><button class="tab" data-view="cards">翻卡记忆</button><button class="tab" data-view="quiz">章节小测</button></div>
+<div id="notesView" class="layout"><section class="panel"><h2>考点地图</h2><p class="sub">按章节浏览，搜索框可检索标题和内容。</p><div id="notes"></div></section><aside class="panel"><h2>推荐复习路线</h2><p class="sub">理解概念 → 对比辨析 → 公式练习 → 错题回看</p><div class="point"><strong>01 · 先抓框架</strong><p>分清个人理财业务、法律法规、投资市场和金融产品分类。</p></div><div class="point"><strong>02 · 专攻易混点</strong><p>理财顾问/综合理财、货币/资本市场、发行/流通市场、期初/期末年金。</p></div><div class="point"><strong>03 · 计算题单练</strong><p>现值终值、年金、NPV、IRR建议配合草稿纸练习。</p></div><p class="sub">本工具依据上传的记背版资料提炼，法规和业务标准请以课程指定版本及现行规定为准。</p></aside></div>
+<div id="cardsView" class="layout hide"><section class="panel"><h2>翻卡记忆</h2><p class="sub">先自己回忆，再点击卡片查看答案。</p><div id="flash" class="flashcard" role="button" tabindex="0"><div id="ci" class="sub"></div><div id="front" class="face"></div><div id="back" class="answer hide"></div></div><div class="actions" style="justify-content:center;margin-top:12px"><button class="secondary" id="prev">上一张</button><button id="flip">查看答案</button><button class="secondary" id="next">下一张</button><button class="secondary" id="random">随机抽卡</button></div><div class="progress"><span id="cp"></span></div></section><aside class="panel"><h2>记忆提示</h2><p>看见问题先尝试用自己的话回答，再翻面核对关键词。法律类注意主体、条件、期限；市场类注意期限、风险和流动性；计算类注意现金流时点。</p></aside></div>
+<div id="quizView" class="layout hide"><section class="panel"><h2>章节小测</h2><p class="sub">每轮抽取最多10题，选择后即时反馈。</p><div class="toolbar"><select id="qfilter"><option value="all">全部章节随机</option></select><button id="start">开始 / 重新抽题</button></div><div id="qs"></div><button id="submit">查看本轮成绩</button><p id="result" class="sub"></p></section><aside class="panel"><h2>答题统计</h2><div id="score" style="font-size:34px;font-weight:750">—</div><p class="sub">正确题数 / 已作答题数</p><div class="progress"><span id="qp"></span></div><p class="sub">答错后回到左侧考点地图复习对应章节。</p></aside></div>
+<div class="footer">个人学习辅助工具 · 内容基于上传的《个人理财考试核心考点汇总（记背版）》提炼；具体考试范围以老师要求为准。</div></main>
+<script>
+const C=[
+["第一章｜个人理财概述",[
+["个人理财的一般概念","以了解、分析客户基本情况为前提，根据人生目标、财务状况、风险属性等因素制定并执行理财规划，实现理财目标。"],
+["个人理财业务相关主体","个人客户、商业银行、非银行金融机构、互联网金融机构、第三方财富管理机构、律师/会计师事务所、监管机构。"],
+["理财顾问服务 vs 综合理财服务","理财顾问服务提供财务分析与规划、投资建议和产品推介，客户自行管理资金并承担收益与风险；综合理财服务在此基础上接受委托和授权，按约定投资和管理资产。"],
+["客户类型与服务层次","理财业务面向广泛客户、提供基础服务；财富管理面向中高端客户、提供部分个性化服务；私人银行面向高端客户、提供个性化综合服务。"],
+["理财师职业特征与4E","职业特征：顾问性、专业性、综合性、规范性、长期性、动态性。4E：教育、考试、工作经验、职业道德。"],
+["理财师职业道德","遵纪守法、保守秘密、正直守信、客观公正、勤勉尽职、专业胜任。"]],
+["第二章｜相关法律法规",[
+["民事法律行为基本原则","民事主体法律地位平等；遵循自愿、公平、诚信原则，不得违背公序良俗；诚信原则是核心、基本原则。"],
+["民事行为能力三类","完全能力：成年人；16周岁以上且以劳动收入为主要生活来源的未成年人视为完全能力人。限制能力：8周岁以上未成年人、不能完全辨认自己行为的成年人。无能力：不满8周岁未成年人、不能辨认自己行为的成年人。"],
+["代理的分类与效力","代理包括委托代理和法定代理。代理人在权限内以被代理人名义实施行为，原则上对被代理人发生效力；无权代理未经追认，对被代理人不发生效力。"],
+["合同与格式条款","格式条款应公平并合理提示重大利害条款；有两种以上解释时作不利于提供方的解释；与非格式条款不一致时采用非格式条款。"],
+["抵押与质押","抵押针对法律允许抵押的财产；土地所有权等法律规定不得抵押的财产除外。设立质权应采用书面质押合同；可出质权利包括票据、债券、存款单、可转让基金份额/股权、知识产权财产权、应收账款等。"],
+["夫妻财产与继承","夫妻工资奖金、生产经营投资收益等通常属于共同财产；婚前财产、人身损害赔偿等属于个人财产。法定继承第一顺序为配偶、子女、父母；第二顺序为兄弟姐妹、祖父母、外祖父母。"],
+["理财产品与销售合规","理财产品按募集方式分公募/私募，按投资性质分固定收益/权益/商品及金融衍生品/混合，按运作方式分封闭式/开放式。基金销售不得违规承诺保本收益、预测业绩或误导客户购买不匹配产品。"],
+["个人外汇业务重点","资料列示个人结汇和境内个人购汇年度便利化额度分别为每人每年等值5万美元；办理业务需真实合法，并按规定提供身份证件及交易材料。"]],
+["第三章｜理财投资市场介绍",[
+["金融市场构成要素","主体（企业、政府、央行、金融机构、居民等）、客体（票据、债券、股票、外汇、衍生品等）、中介、监管机构。"],
+["金融市场功能","资金融通与调剂、财富投资与避险、交易、优化资源配置、经济调节、反映经济运行。"],
+["有形市场 vs 无形市场","有形市场有固定场所、组织机构和专门设备；无形市场无固定集中场所，借助电信和网络交易，地域限制较小、交易时间较长。"],
+["发行市场 vs 流通市场","发行市场（一级市场）销售新发行金融产品，为融资者筹资；流通市场（二级市场）交易已发行证券，为持有者提供流动性。"],
+["货币市场 vs 资本市场","货币市场融通不超过1年的短期资金，通常风险收益较低、流动性强；资本市场以1年以上中长期资金交易为主，通常风险收益较高、流动性较弱。"],
+["直接融资 vs 间接融资","直接融资由资金需求方直接向供给方融资，如发行股票债券；间接融资通过银行等信用中介实现资金融通。"],
+["债券、股票与衍生品","债券是债权凭证；股票是所有权凭证。债券价格与到期收益率、市场利率通常呈反向关系。衍生品具有风险对冲转移、价格发现、提高交易效率等功能。"],
+["外汇、保险与另类投资","外汇市场具有空间统一性和时间连续性。保险原则包括保险利益、近因、损失补偿、最大诚信。另类投资可包括黄金、房地产、收藏品等。"]],
+["第四章｜金融投资产品概述",[
+["银行代理金融投资产品","注意产品发行主体、风险来源、收益特征与适合客户。"],
+["银行理财产品分类","按募集方式：公募/私募；按投资性质：固定收益、权益、商品及金融衍生品、混合；按运作方式：封闭式/开放式。"],
+["基金的特点","基金集合投资者资金，由专业机构管理，具有组合投资、分散风险等特点；仍需关注净值波动、费用、流动性及投资范围。"],
+["保险的种类与功能","区分社会保险与商业保险、人身保险与财产保险；保险保障与投资收益不可混为一谈，收益不确定的产品应注意风险提示。"],
+["信托、资管计划与私募基金","比较法律关系、管理主体、投资范围、期限、流动性、风险承担与投资者要求。"],
+["国债与贵金属","国债由国家信用支持，仍需注意利率和价格变化；贵金属价格可能受供求、通胀、利率、汇率、货币政策及地缘政治影响。"]],
+["第五章｜客户分类与需求分析",[
+["了解客户的主要内容","了解客户财务状况、投资目标、风险属性、家庭情况、收入支出、资产负债及其他影响理财决策的信息。"],
+["马斯洛需求层次理论","通常由低到高包括生理、安全、社交/归属、尊重、自我实现需求。"],
+["客户分类与家庭生命周期","可按年龄、收入、资产、风险承受能力、生命周期等维度分类；不同家庭阶段的现金流、责任和理财目标会变化。"],
+["客户信息收集方式","开户资料、调查问卷、面对面沟通、线上沟通、数据挖掘等；注意信息真实性、完整性、保密与合规使用。"]],
+["第六章｜理财规划计算工具与方法",[
+["货币时间价值","资金在不同时间点的价值不同；基本参数包括现值PV、终值FV、利率i、期数n、年金PMT。"],
+["现值与终值","单笔复利终值：FV=PV×(1+i)^n；现值：PV=FV/(1+i)^n。"],
+["72法则","粗略估算资金翻倍年数：翻倍年数≈72÷年收益率（百分比）。"],
+["有效年利率","若名义年利率为r、每年复利m次，有效年利率=(1+r/m)^m−1。"],
+["期初年金 vs 期末年金","期末年金在每期期末支付；期初年金在每期期初支付。在利率为正时，其他条件相同，期初年金现值/终值通常更高。"],
+["永续年金与增长型年金","永续年金满足条件时现值=每期现金流/折现率；增长型永续年金常用PV=C1/(r−g)，前提是r>g。"],
+["NPV 与 IRR","NPV为各期现金流折现值之和；通常NPV>0表示项目增加价值。IRR是使NPV=0的折现率，应与要求报酬率比较。"]],
+["第七章｜理财规划流程",[
+["接触客户与建立信任","专业、诚恳沟通，说明服务范围、流程和双方责任，建立长期信任关系。"],
+["收集与整理客户信息","收集财务及非财务信息，核对完整性、准确性与时效性，妥善管理客户档案。"],
+["分析财务状况与确定目标","分析收入、支出、资产、负债和现金流；目标应明确、可衡量、可实现，并考虑期限和优先级。"],
+["理财规划方案内容","根据客户目标和约束制定方案，说明策略、产品安排、资金需求、风险提示、执行步骤与后续评估。"],
+["执行与后续跟踪","遵循客户授权、合规和风险匹配原则；通过定期跟踪、评估和调整，适应客户与市场变化。"]],
+["第八章｜理财师沟通与销售",[
+["仪表与会见礼仪","保持专业、整洁、得体；守时，尊重客户，注意倾听与表达。"],
+["时间管理优先矩阵","根据重要性与紧急性安排任务；重要且紧急优先处理，重要不紧急的事项应主动规划。"],
+["电话与线上沟通","表达清晰、确认关键信息、保护客户隐私；线上沟通也要注意身份核验、信息安全和留痕。"],
+["FABE产品推介法","F—Feature特征；A—Advantage优势；B—Benefit客户利益；E—Evidence支持证据。应真实合规地从客户需求出发说明产品。"]]]
+];
+const F=[["个人理财的核心过程是什么？","了解分析客户情况 → 设定理财目标与规划 → 执行规划 → 实现目标。"],["理财业务的4E是什么？","教育、考试、工作经验、职业道德。"],["理财顾问服务和综合理财服务的关键区别？","是否接受客户委托和授权，对客户资金进行投资和管理。"],["民事活动的基本原则有哪些？","平等、自愿、公平、诚信，不得违背公序良俗。"],["法定继承的第一顺序是什么？","配偶、子女、父母。"],["发行市场与流通市场的区别？","一级市场销售新发行证券以筹资；二级市场交易已发行证券以提供流动性。"],["货币市场和资本市场如何区分？","货币市场主要是不超过1年的短期资金；资本市场主要是1年以上中长期资金。"],["债券和股票分别代表什么？","债券是债权凭证；股票是所有权凭证。"],["保险四项基本原则是什么？","保险利益、近因、损失补偿、最大诚信原则。"],["单笔复利终值公式？","FV=PV×(1+i)^n。"],["NPV大于0通常说明什么？","按所用折现率计算项目净现值为正，通常可接受，但仍需结合风险和其他约束。"],["FABE分别代表什么？","Feature特征、Advantage优势、Benefit利益、Evidence证据。"],["马斯洛需求层次由低到高？","生理、安全、社交/归属、尊重、自我实现。"],["期初年金和期末年金的付款时点？","期初年金在每期期初支付；期末年金在每期期末支付。"],["为什么需要后续跟踪？","客户情况和市场环境会变化，需要评估目标进度、方案效果并适时调整。"]];
+const Q=[
+[0,"理财师4E不包括哪一项？",["教育","考试","情绪管理","职业道德"],2,"4E为教育、考试、工作经验和职业道德。"],
+[0,"综合理财服务最关键的特征是？",["只介绍产品","接受客户委托和授权开展投资与资产管理","只提供存款信息","不涉及投资计划"],1,"综合理财服务在理财顾问服务基础上接受委托和授权。"],
+[1,"法定继承的第一顺序继承人是？",["兄弟姐妹、祖父母","配偶、子女、父母","朋友和同事","仅配偶"],1,"资料列示第一顺序为配偶、子女、父母。"],
+[1,"对格式条款有两种以上解释时，通常应当？",["作有利于提供方的解释","作不利于提供方的解释","合同自动无效","由客户单方面决定"],1,"通常作出不利于提供格式条款一方的解释。"],
+[1,"资料中的个人结汇和境内个人购汇年度便利化额度为？",["每人每年等值1万美元","每人每年等值5万美元","每人每月等值5万美元","没有额度管理"],1,"按上传资料记背版所列数字作答；实际办理请核对现行规定。"],
+[2,"货币市场主要融通的资金期限是？",["不超过1年","1年以上","10年以上","只交易股票"],0,"货币市场是短期金融市场，资料定义为不超过1年。"],
+[2,"发行市场的主要作用是？",["只为证券提供转售场所","帮助融资者筹资并为投资者提供机会","保证投资收益","消除所有市场风险"],1,"发行市场销售新发行金融产品。"],
+[2,"一般而言，债券价格与市场利率的关系是？",["正相关","反相关","完全无关","始终相等"],1,"资料指出债券交易价格同市场利率成反比。"],
+[2,"保险的基本原则不包括？",["保险利益原则","近因原则","损失补偿原则","保本保收益原则"],3,"资料列示保险利益、近因、损失补偿、最大诚信原则。"],
+[3,"按运作方式，银行理财产品可分为？",["公募和私募","固定收益和权益","封闭式和开放式","境内和境外"],2,"按运作方式分封闭式和开放式。"],
+[4,"马斯洛需求层次中通常最高层是？",["安全需求","生理需求","自我实现需求","社交需求"],2,"通常由低到高为生理、安全、社交、尊重、自我实现。"],
+[5,"单笔复利终值公式是？",["FV=PV/(1+i)^n","FV=PV×(1+i)^n","PV=FV×(1+i)^n","FV=PV+i+n"],1,"复利终值=现值×(1+利率)^期数。"],
+[5,"项目净现值NPV大于0，通常意味着？",["折现后净收益为正","项目一定没有风险","IRR必定为0","不需要进一步分析"],0,"NPV>0通常表示项目在所用折现率下增加价值。"],
+[5,"期初年金的付款时点是？",["每期期末","仅到期日","每期期初","随机时点"],2,"期初年金在每期期初支付。"],
+[6,"制定理财目标时，较合理的做法是？",["不考虑期限","只推荐高收益产品","结合客户情况、优先级和可实现性","忽略客户风险属性"],2,"理财目标需要结合客户情况、期限、优先级及可实现性。"],
+[7,"FABE中的E代表？",["Expense费用","Evidence证据","Estimate估计","Equity股权"],1,"FABE为特征、优势、利益、证据。"],
+[7,"重要但不紧急的任务更适合？",["一直拖延","主动规划安排","一律中断其他任务","完全忽略"],1,"重要不紧急的事项应主动规划。"],
+[3,"股票通常反映哪种关系？",["债权债务关系","所有权关系","保险关系","代理关系"],1,"股票是所有权凭证，债券是债权凭证。"],
+[0,"理财顾问服务中，客户接受建议后通常由谁管理资金？",["客户自行管理和运用","监管机构","律师事务所","所有客户共同管理"],0,"客户自行管理和运用资金，并承担相应收益与风险。"],
+[2,"金融衍生品市场的一项重要功能是？",["消除一切风险","风险对冲与转移","保证固定收益","取代所有基础市场"],1,"资料列示风险对冲转移、价格发现等功能。"]];
+const $=id=>document.getElementById(id);let card=0,flipped=false,quiz=[],ans={};
+C.forEach((c,i)=>{for(const id of ["filter","qfilter"]){let o=document.createElement("option");o.value=i;o.textContent=c[0];$(id).append(o)}});
+function esc(s){return s.replace(/[&<>"']/g,x=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]))}
+function renderNotes(){let t=$("search").value.trim().toLowerCase(),f=$("filter").value,h="";C.forEach((c,i)=>{if(f!=="all"&&+f!==i)return;let p=c[1].filter(x=>(c[0]+" "+x.join(" ")).toLowerCase().includes(t));if(t&&!p.length)return;h+=`<article class="chapter"><div class="chapterhead"><h3>${esc(c[0])}</h3><span class="sub">${p.length}个考点</span></div><div class="points">${p.map(x=>`<div class="point"><strong><span class="pill">核心考点</span>${esc(x[0])}</strong><p>${esc(x[1])}</p></div>`).join("")}</div></article>`});$("notes").innerHTML=h||'<p class="sub">没有找到匹配内容，试试更短的关键词。</p>'}
+function showCard(){$("ci").textContent=`CARD ${card+1} / ${F.length}`;$("front").textContent=F[card][0];$("back").textContent=F[card][1];$("back").classList.toggle("hide",!flipped);$("cp").style.width=((card+1)/F.length*100)+"%";$("flip").textContent=flipped?"隐藏答案":"查看答案"}
+function view(v){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.view===v));["notes","cards","quiz"].forEach(x=>$(x+"View").classList.toggle("hide",x!==v+"View"));if(v==="cards")showCard();if(v==="quiz"&&!quiz.length)startQuiz()}
+function startQuiz(){let f=$("qfilter").value,p=Q.filter(q=>f==="all"||q[0]===+f).sort(()=>Math.random()-.5);quiz=p.slice(0,10);ans={};$("result").textContent="";renderQuiz()}
+function renderQuiz(){$("qs").innerHTML=quiz.map((q,i)=>`<div class="question"><p>${i+1}. ${esc(q[1])}</p>${q[2].map((o,j)=>`<button class="option ${ans[i]===j?(j===q[3]?"correct":"wrong"):""}" data-i="${i}" data-j="${j}">${"ABCD"[j]}. ${esc(o)}</button>`).join("")}${ans[i]!==undefined?`<div class="sub">${ans[i]===q[3]?"回答正确。":"正确答案："+ "ABCD"[q[3]]+"。"} ${esc(q[4])}</div>`:""}</div>`).join("");$("qs").querySelectorAll(".option").forEach(b=>b.onclick=()=>{ans[+b.dataset.i]=+b.dataset.j;renderQuiz();score()});score()}
+function score(){let done=Object.keys(ans).length,correct=quiz.filter((q,i)=>ans[i]===q[3]).length;$("score").textContent=done?`${correct} / ${done}`:"—";$("qp").style.width=(done/Math.max(1,quiz.length)*100)+"%"}
+$("search").oninput=renderNotes;$("filter").onchange=renderNotes;$("clear").onclick=()=>{$("search").value="";$("filter").value="all";renderNotes()};document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>view(b.dataset.view));$("flash").onclick=$("flip").onclick=()=>{flipped=!flipped;showCard()};$("prev").onclick=()=>{card=(card-1+F.length)%F.length;flipped=false;showCard()};$("next").onclick=()=>{card=(card+1)%F.length;flipped=false;showCard()};$("random").onclick=()=>{card=Math.floor(Math.random()*F.length);flipped=false;showCard()};$("start").onclick=startQuiz;$("submit").onclick=()=>{let n=quiz.filter((q,i)=>ans[i]===q[3]).length;$("result").textContent=`本轮成绩：${n}/${quiz.length}；已作答${Object.keys(ans).length}题。建议回看答错题对应的考点。`;$("score").textContent=`${n} / ${quiz.length}`;$("qp").style.width=(n/Math.max(1,quiz.length)*100)+"%"};renderNotes();showCard();startQuiz();
+</script></body></html>
